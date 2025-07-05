@@ -1,0 +1,15 @@
+subprojects {
+    apply plugin: 'java'
+
+    group = 'com.exceletl'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile) {
+        sourceCompatibility = '21'
+        targetCompatibility = '21'
+    }
+}

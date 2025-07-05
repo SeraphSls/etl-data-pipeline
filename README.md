@@ -12,22 +12,20 @@ A ideia é representar um fluxo real de ingestão, validação e despacho de dad
 2. O serviço `client-validator` consome do tópico, valida cada entrada e decide:
    - Se válida, publica no tópico `validated-client`
    - Se inválida, envia para o tópico `client-validation-dlq`
-3. O serviço `client-dispatcher` consome do tópico `validated-client` e envia os dados para a fila `client-persistence` no RabbitMQ, para posterior gravação ou uso.
+4. o serviço `client-enrichment` consome do tópico `validated-client` e realiza devidos tratamentos de dados e publica no tópico `data-prepared`
+3. O serviço `client-dispatcher` consome do tópico `data-prepared` e envia os dados para a fila `client-persistence` no RabbitMQ, para posterior gravação ou uso.
 
 ## Tecnologias
 
-- Java 17
+- Java 21
 - Spring Boot
-- Apache Kafka (modo KRaft, sem Zookeeper)
+- Apache Kafka
 - RabbitMQ
 - Docker Compose
 
 ## Estrutura
 
-Cada micro-serviço é uma aplicação isolada com seu próprio `pom.xml`, rodando de forma independente, mas orquestrados juntos via `docker-compose`.
+Cada micro-serviço é uma aplicação isolada com seu próprio `build.gradle`, rodando de forma independente, mas orquestrados juntos via `docker-compose`.
 
-## Objetivo
-
-O projeto visa treinar e demonstrar conhecimento em system design distribuído, mensageria e boas práticas de desacoplamento entre etapas críticas de fluxo de dados.
 
 
