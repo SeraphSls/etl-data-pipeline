@@ -1,4 +1,4 @@
-# Excel ETL System
+#  ETL data pipeline
 
 Este projeto simula um pipeline de ETL distribuído, utilizando Kafka e RabbitMQ para processamento assíncrono de dados oriundos de planilhas Excel.
 
