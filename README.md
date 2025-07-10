@@ -9,9 +9,6 @@ A ideia é representar um fluxo real de ingestão, validação e despacho de dad
 ## Fluxo
 
 1. O serviço `excel-maniac` recebe um arquivo `.xlsx` via HTTP e publica os dados no tópico Kafka `raw-data-import`.
-2. O serviço `client-validator` consome do tópico, valida cada entrada e decide:
-   - Se válida, publica no tópico `validated-client`
-   - Se inválida, envia para o tópico `client-validation-dlq`
 4. o serviço `client-enrichment` consome do tópico `validated-client` e realiza devidos tratamentos de dados e publica no tópico `data-prepared`
 3. O serviço `client-dispatcher` consome do tópico `data-prepared` e envia os dados para a fila `client-persistence` no RabbitMQ, para posterior gravação ou uso.
 
@@ -19,7 +16,6 @@ A ideia é representar um fluxo real de ingestão, validação e despacho de dad
 
 - Java 21
 - Spring Boot
-- Apache Kafka
 - RabbitMQ
 - Docker Compose
 
