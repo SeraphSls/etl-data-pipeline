@@ -1,5 +1,5 @@
 rootProject.name = 'etl-data-pipeline'
 
 include 'services:excel-maniac'
-include 'services:client-dispatcher'
-include 'services:client-enrichment'
+include 'services:data-herald'
+include 'services:sheet-alchemist'
