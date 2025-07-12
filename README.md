@@ -23,22 +23,12 @@ Cada serviço consome uma fila, processa a mensagem e publica em outra, formando
 
 ## Tecnologias utilizadas
 
-- Java 17
+- Java 21
 - Spring Boot
 - Spring AMQP (RabbitMQ)
 - Docker e Docker Compose
 - RabbitMQ Management UI (porta 15672)
 - Swagger (Springdoc OpenAPI) para testes REST
-
-## Estrutura do projeto
-
-etl-data-pipeline/
-├── services/
-│   ├── excel-maniac/        # Recebe e publica os dados
-│   ├── sheet-alchemist/     # Enriquecimento
-│   └── data-herald/         # Despacho final
-├── docker-compose.yml       # Subir RabbitMQ e os serviços
-└── README.md
 
 Cada micro-serviço é isolado, com seu próprio build.gradle, ponto de entrada e responsabilidades bem definidas.
 
